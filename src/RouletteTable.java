@@ -13,12 +13,17 @@ public class RouletteTable {
 
         for (int i = 0; i < players.length; i++) {
 
-            players[i] = new Player(sc.nextLine());
-            System.out.println(players[i].toString());
+            String s = sc.next();
 
-            if (sc.nextLine().equals("play")) {
+            if (s.equals("play")) {
                 break;
             }
+
+            String s1 = " " + sc.next();
+
+            players[i] = new Player(s + s1);
+
+
         }
         System.out.println(Arrays.toString(players));
         System.out.println("Игроки идут за стол");
@@ -31,7 +36,6 @@ public class RouletteTable {
             }
         }
     }
-
 
 
     public static void death(Player player) {
