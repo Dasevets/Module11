@@ -8,7 +8,7 @@ public class Roulette {
             if(RouletteTable.players[i] == null){
                 continue;
             }
-            RouletteTable.players[i].playRoulette(RouletteTable.players[i]);
+            RouletteTable.players[i].playRoulette();
 
         }
     }

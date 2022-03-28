@@ -21,8 +21,9 @@ public class RouletteTable {
 
             String s1 = " " + sc.next();
 
-            players[i] = new Player(s + s1);
 
+
+            players[i] = new Player(s + s1);
 
         }
         System.out.println(Arrays.toString(players));

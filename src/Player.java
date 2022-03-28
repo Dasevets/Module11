@@ -18,12 +18,13 @@ public class Player {
             e.getMessage();
             nickname = "";
         }
+
     }
 
-    public void playRoulette(Player player){
-        int sp = Revolver.spinTheDrum(player);
+    public void playRoulette(){
+        int sp = Revolver.spinTheDrum(this);
         if(sp == Revolver.bullet){
-            RouletteTable.death(player);
+            RouletteTable.death(this);
         }
     }
 
