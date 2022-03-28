@@ -1,32 +1,28 @@
 
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class RouletteTable {
     static Scanner sc = new Scanner(System.in);
 
-    static Player[] players = new Player[6];
+    static List<Player> players = new ArrayList<>();
+    static int round = 1;
 
     public static void rouletteTable() {
         System.out.println("Добро пожаловать в русскую рулетку, играет не больше 6 игроков.");
         System.out.println("Введите имена игроков: ");
 
-        for (int i = 0; i < players.length; i++) {
+        for (int i = 0; i < 6; i++) {
 
-            String s = sc.next();
+            String s = sc.nextLine();
 
             if (s.equals("play")) {
                 break;
             }
 
-            String s1 = " " + sc.next();
-
-
-
-            players[i] = new Player(s + s1);
+            players.add(new Player(s ));
 
         }
-        System.out.println(Arrays.toString(players));
+        System.out.println(players.toString());
         System.out.println("Игроки идут за стол");
         for (Player pl : players) {
 
@@ -36,12 +32,22 @@ public class RouletteTable {
                 e.getMessage();
             }
         }
+        System.out.println(" ");
+        Revolver.loadRevolver();
+        Roulette.roulette(0);
     }
 
 
     public static void death(Player player) {
-        System.out.println("BOOM!");
+        System.out.println("\nBOOM!");
         System.out.println(player.toString() + " умер");
 
+        System.out.println("Раунд " + round + " закончен\n");
+        round++;
+
+        players.remove(player);
+        System.out.println("\nВ игре участвуют: " + players.toString() + "\n");
+        Revolver.loadRevolver();
+        Roulette.roulette(0);
     }
 }

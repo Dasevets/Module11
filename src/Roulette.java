@@ -1,15 +1,21 @@
 public class Roulette {
-    public static void roulette(){
+    //static Revolver revolver = new Revolver();
+
+    public static void start(){
         RouletteTable.rouletteTable();
-        Revolver revolver = new Revolver();
-        revolver.loadRevolver();
+    }
+    public static void roulette(int i){
 
-        for (int i = 0; i < RouletteTable.players.length; i++) {
-            if(RouletteTable.players[i] == null){
-                continue;
+
+
+            if(RouletteTable.players.size() == 1){
+                System.out.println("Игра закончена!");
+                System.out.println(RouletteTable.players.get(0).toString() + " победитель!");
+                System.exit(0);
             }
-            RouletteTable.players[i].playRoulette();
 
-        }
+            Player.playRoulette(RouletteTable.players.get(i));
+
+
     }
 }

@@ -1,8 +1,7 @@
-import java.util.Arrays;
-
 public class Player {
     private String name;
     private String nickname;
+    static int i = 0;
 
 
     public Player(String playerName){
@@ -15,17 +14,31 @@ public class Player {
             this.nickname = nameArr[1];
         }
         catch (ArrayIndexOutOfBoundsException e){
-            e.getMessage();
+
             nickname = "";
         }
 
     }
 
-    public void playRoulette(){
-        int sp = Revolver.spinTheDrum(this);
-        if(sp == Revolver.bullet){
-            RouletteTable.death(this);
+    public static void playRoulette(Player player){
+
+        int sp = Revolver.spinTheDrum(player);
+        boolean death = sp == Revolver.bullet;
+        if(!death){
+            try {
+                i++;
+                Roulette.roulette(i);
+            }
+            catch (IndexOutOfBoundsException ex){
+                i = 0;
+                Roulette.roulette(i);
+            }
+
+        }else {
+            RouletteTable.death(player);
+
         }
+
     }
 
     public String toString(){
